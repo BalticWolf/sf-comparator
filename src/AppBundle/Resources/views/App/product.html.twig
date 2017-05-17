@@ -1,0 +1,17 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+    <div>
+        <h2>{{ product.name }}</h2>
+        <ul>
+        {% for offer in offers %}
+            <li>
+                {{ offer.price }}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div>
+        
+    </div>
+{% endblock %}

@@ -20,6 +20,23 @@ class AppController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('AppBundle:App:index.html.twig');
+        $products = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Product')
+            ->findBy([], [
+                'designation' => 'ASC',
+            ]);
+
+        // Récupérer la liste des produits
+        return $this->render('AppBundle:App:index.html.twig', [
+            'products' => $products,
+        ]);
+    }
+    public function productAction($productSlug)
+    {
+        $product = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Product')
+            ->findOneBy(['id' => $productSlug]);
     }
 }

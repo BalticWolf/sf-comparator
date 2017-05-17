@@ -1,0 +1,33 @@
+AppBundle\Entity\Offer:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\OfferRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        price:
+            type: decimal
+            precision: '7'
+            scale: '2'
+        updatedAt:
+            type: datetime
+    
+    uniqueConstraints:
+        uniCouple:
+            columns: [merchant_id, product_id]
+
+    manyToOne:
+        merchant:
+            targetEntity: AppBundle\Entity\Merchant
+            joinColumn:
+                nullable: false
+        product:
+            targetEntity: AppBundle\Entity\Product
+            joinColumn:
+                nullable: false
+                
+    lifecycleCallbacks: {  }

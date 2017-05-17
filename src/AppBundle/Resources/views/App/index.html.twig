@@ -1,5 +1,16 @@
 {% extends 'AppBundle::base.html.twig' %}
 
 {% block body %}
-
+    <div class="container">
+        <h1>Liste des produits</h1>
+        <ul>
+        {% for product in products %}
+            <li>
+                <a href="{{ path('app_product', {'productId': product.id}) }}">
+                    {{ product.designation }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
